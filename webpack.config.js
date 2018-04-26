@@ -3,17 +3,17 @@ const webpack = require('webpack');
 const publicPath = '/dist/build/';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
   //Content 
   entry: './index.js',
   // A SourceMap without column-mappings ignoring loaded Source Maps. 
   devtool: 'cheap-module-source-map',
-  watch: true,
   plugins: [
     //simplifies creation of HTML files to serve your webpack bundles. This is especially useful for webpack bundles that include a hash in the filename which changes every compilation. You can either let the plugin generate an HTML file for you, supply your own template using lodash templates or use your own loader.
     new HtmlWebpackPlugin({
-      title: 'Hot Module Replacement'
+      template: './index.html',
+      title: 'Barnmålvakt',
+      
     }),
     //Auto replacement of page when i save some file, even css
     new webpack.HotModuleReplacementPlugin()
@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, publicPath),
     filename: '[name].bundle.js',
-    publicPath: publicPath,
+    publicPath: '/',
     sourceMapFilename: '[name].map',
   },
 

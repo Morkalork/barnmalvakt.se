@@ -6,7 +6,7 @@ import Bottom from './Bottom';
 import FrontPage from './FrontPage';
 import styled from 'styled-components';
 import BackgroundImage from '../assets/images/jumbotron.jpg';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter  as Router, Route } from 'react-router-dom';
 import Order from './Order';
 import Faq from './FrontPage/Faq';
 import GeneralFaq from './GeneralFaq';

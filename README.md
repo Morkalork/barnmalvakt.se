@@ -13,8 +13,7 @@ I don't know why you'd want to install this since it's already running at [http:
 Then to run it, open a terminal (if you haven't at this point then how did you run the above command?) and run:
 
 ```
-npm run build:dev
-npm run server
+npm run start
 ```
 
 Then visit localhost:8080.

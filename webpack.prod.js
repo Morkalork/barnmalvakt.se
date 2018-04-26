@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
  entry: './index.js',
+ watch: false,
  output: {
     path: path.join(__dirname, '/dist/assets'),
     filename: '[name].bundle.js',
