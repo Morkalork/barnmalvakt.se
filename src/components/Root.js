@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { App, Article, Footer, Section, Heading, Box, Paragraph } from 'grommet';
+import { App, Article, Footer, Section, Heading, Box, Paragraph } from './grommet-export';
 import '../../node_modules/grommet-css';
 import Top from './Top';
 import Bottom from './Bottom';

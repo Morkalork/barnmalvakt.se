@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Card, Anchor } from 'grommet';
+import { Section, Box, Heading, Paragraph, Card, Anchor } from '../../grommet-export';
 import LawImage from '../../../assets/images/law.jpg';
 import SchoolImage from '../../../assets/images/school.jpg';
 import SocialImage from '../../../assets/images/social-media.jpg';

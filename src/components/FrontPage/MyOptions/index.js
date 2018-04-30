@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Image } from 'grommet';
+import { Section, Box, Heading, Paragraph, Image } from '../../grommet-export';
 import styled from 'styled-components';
 import FatherImage from '../../../assets/images/father.png';
 import BlueSection from '../../BlueSection';

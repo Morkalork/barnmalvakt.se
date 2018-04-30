@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Footer, Title, Paragraph, Box } from 'grommet';
+import { Footer, Title, Paragraph, Box } from '../grommet-export';
 
 
 const Bottom = () => {

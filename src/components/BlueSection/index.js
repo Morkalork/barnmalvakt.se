@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Pulse, Button } from 'grommet';
+import { Section, Box, Heading, Paragraph, Button } from '../grommet-export';
 import { Cart } from 'grommet-icons';
 import styled from 'styled-components';
 import BlueBackgroundImage from '../../assets/images/blue-background.png';

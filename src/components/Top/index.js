@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Title, Box, Menu, Anchor } from 'grommet';
+import { Header, Title, Box, Menu, Anchor } from '../grommet-export';
 import { Actions } from 'grommet-icons';
 import styled from 'styled-components';
 

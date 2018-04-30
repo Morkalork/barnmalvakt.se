@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Heading, Paragraph } from 'grommet';
+import { Section, Heading, Paragraph } from '../../grommet-export';
 
 const MyRights = () => {
   return <Section size='xxlarge' justify='center' align='center' full={true}>
