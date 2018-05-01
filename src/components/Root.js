@@ -3,14 +3,15 @@ import { App, Article, Footer, Section, Heading, Box, Paragraph } from './gromme
 import '../../node_modules/grommet-css';
 import Top from './Top';
 import Bottom from './Bottom';
-import FrontPage from './FrontPage';
 import styled from 'styled-components';
 import BackgroundImage from '../assets/images/jumbotron.jpg';
 import { HashRouter  as Router, Route } from 'react-router-dom';
-import Order from './Order';
-import Faq from './FrontPage/Faq';
-import GeneralFaq from './GeneralFaq';
-import Approve from './Approve';
+import FrontPage from './pages/FrontPage';
+import Order from './pages/Order';
+import Faq from './pages/FrontPage/Faq';
+import GeneralFaq from './pages/GeneralFaq';
+import Approve from './pages/Approve';
+import Approved from './pages/Approved';
 
 const Jumbotron = styled(Section) `
   background-image: url(${BackgroundImage});
@@ -56,7 +57,7 @@ const Root = () => {
               <Heading
                 tag='h3'
                 uppercase={true}>
-                <em>"I en värd av Fake News, ha en Fake Family"</em>
+                <em>"I en värld av Fake News, ha en Fake Family"</em>
               </Heading>
             </Box>
           </WhiteBox>
@@ -65,6 +66,7 @@ const Root = () => {
         <Route path='/order' component={Order} />
         <Route path='/faq' component={GeneralFaq} />
         <Route path='/approve' component={Approve} />
+        <Route path='/approved' component={Approved} />
         <Bottom />
       </Article>
     </App>

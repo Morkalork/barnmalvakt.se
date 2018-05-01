@@ -16,7 +16,9 @@ const Top = () => {
     <Box size='xxlarge'>
       <Header>
         <Title>
-          Barnmålvakt
+          <Anchor path='/'>
+            Barnmålvakt
+          </Anchor>
         </Title>
         <Box flex={true}
           justify='end'

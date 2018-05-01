@@ -10,6 +10,9 @@ const ColoredSection = styled(Section) `
   background-position: right 4px bottom 4px;
   background-repeat: no-repeat;
   background-size: 120px 116px;
+  height: auto;
+  min-height: 100vh;
+  max-height: none;
 `;
 
 const BlueSection = ({children}) => {

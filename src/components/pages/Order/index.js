@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../grommet-export';
+import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../../grommet-export';
 import FormCheckmarkIcon from 'grommet/components/icons/base/FormCheckmark';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 import styled from 'styled-components';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../grommet-export';
+import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../../grommet-export';
 import { connect } from 'react-redux';
 
 const Approve = ({
@@ -40,7 +40,7 @@ const Approve = ({
         </ListItem>
       )}
     </List>
-    <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen 'Bekräfta', annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
+    <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen 'Godkänn', annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
     <Box flex={true}
       direction='row'
       justify='between'>
@@ -68,16 +68,6 @@ Approve.propTypes = {
   childsAccident: PropTypes.string
 };
 
-Approve.defaultProps = {
-  selectedPackage: 'Standard',
-  invoicing: 'Yearly',
-  name: 'Geoff',
-  surname: 'Pontsy',
-  email: 'Yeff@heffheff.keff',
-  childsName: 'Barney',
-  childsAge: 3
-};
-
 export default connect((state) => {
   if (!state.form || !state.form.order) {
     return {};
@@ -88,6 +78,14 @@ export default connect((state) => {
   return {
     selectedPackage: order.values.package.label,
     invoicing: order.values.invoicing,
-    name: order.values.name
+    name: order.values.name,
+    surname: order.values.surname,
+    email: order.values.email,
+    childsName: order.values.childsName,
+    childsAge: order.values.childsAge,
+    childsMiddleName: order.values.childsMiddleName,
+    childsSimpleIllness: order.values.childsSimpleIllness,
+    childsDifficultIllness: order.values.childsDifficultIllness,
+    childsAccident: order.values.childsAccident
   };
 })(Approve);
