@@ -10,6 +10,7 @@ import { HashRouter  as Router, Route } from 'react-router-dom';
 import Order from './Order';
 import Faq from './FrontPage/Faq';
 import GeneralFaq from './GeneralFaq';
+import Approve from './Approve';
 
 const Jumbotron = styled(Section) `
   background-image: url(${BackgroundImage});
@@ -60,9 +61,10 @@ const Root = () => {
             </Box>
           </WhiteBox>
         </Jumbotron>
-        <Route exact path="/" component={FrontPage} />
-        <Route path="/order" component={Order} />
-        <Route path="/faq" component={GeneralFaq} />
+        <Route exact path='/' component={FrontPage} />
+        <Route path='/order' component={Order} />
+        <Route path='/faq' component={GeneralFaq} />
+        <Route path='/approve' component={Approve} />
         <Bottom />
       </Article>
     </App>

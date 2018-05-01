@@ -1,32 +1,20 @@
 import React, { Component } from 'react';
-import { Form, Header, Heading, FormFields, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button } from '../../grommet-export';
+import PropTypes from 'prop-types';
+import { Form, Header, Heading, FormFields, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../grommet-export';
 import { Field, reduxForm } from 'redux-form';
 import validateForm from './validate-form';
+import { SimpleIllnesses, DifficultIllness } from './constants';
 
 const packages = [{
   label: 'Basic',
-  value: 'basic'
+  value: 1
 }, {
   label: 'Standard',
-  value: 'standard'
+  value: 2
 }, {
   label: 'Premium',
-  value: 'premium'
+  value: 3
 }];
-
-const renderSelect = ({
-  input,
-  label,
-  meta: { touched, error, warning } }) => {
-  return <FormField label={label}
-    error={error}>
-    <Select options={packages}
-      value={input.value}
-      onChange={({ target, option }) => {
-        input.onChange(option);
-      }} />
-  </FormField>
-};
 
 const renderRadioButtons = ({
   input,
@@ -72,30 +60,102 @@ const renderNumberbox = ({
   </FormField>
 };
 
-const OrderForm = (props) => {
-  const { handleSubmit } = props;
+const renderDateTime = ({
+  input,
+  label,
+  meta: { touched, error, warning } }) => {
+  return <FormField label={label}
+    error={error}>
+    <DateTime value={input.value} onChange={(newDate) => input.onChange(newDate)} />
+  </FormField>
+};
 
-  return (
-    <Form onSubmit={handleSubmit(validateForm)}>
-      <Header>
-        <Heading>
-          Beställ nu!
+const renderSearchbox = ({
+  input,
+  label,
+  meta: { touched, error, warning } },
+  suggestions) => {
+  return <FormField label={label}
+    error={error}>
+    <SearchInput
+      value={input.value}
+      suggestions={suggestions}
+      onSelect={({ target, suggestion }) => input.onChange(suggestion)} />
+  </FormField>
+};
+
+const renderSimpleIllnesses = (fields) => renderSearchbox(fields, SimpleIllnesses);
+const renderDifficultIllnesses = (fields) => renderSearchbox(fields, DifficultIllness);
+
+class OrderForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      package: props.initialValues.package.value
+    };
+
+    this.renderSelect = this.renderSelect.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  renderSelect({
+    input,
+    label,
+    meta: { touched, error, warning } }) {
+    return <FormField label={label}
+      error={error}>
+      <Select options={packages}
+        value={input.value}
+        onChange={({ target, option }) => {
+          input.onChange(option);
+          this.setState({ package: option.value });
+        }} />
+    </FormField>
+  }
+
+  handleSubmit(values) {
+    validateForm(values);
+    
+    this.props.onSubmit();
+  }
+
+  render() {
+    const { handleSubmit } = this.props;
+    const isStandard = this.state.package > packages[0].value;
+    const isPremium = this.state.package > packages[1].value;
+
+    return (
+      <Form onSubmit={handleSubmit(this.handleSubmit)}>
+        <Header>
+          <Heading>
+            Beställ nu!
         </Heading>
-      </Header>
-      <Field name='package' label='Välj paket' component={renderSelect} />
-      <Field name='name' label='Förnamn' component={renderTextbox} />
-      <Field name='surname' label='Efternamn' component={renderTextbox} />
-      <Field name='email' label='E-post' component={renderTextbox} />
-      <Field name='childsName' label='Barnets förnamn' component={renderTextbox} />
-      <Field name='childsAge' label='Barnets ålder' component={renderNumberbox} />
-      <Field name='invoicing' label='Fakturering' component={renderRadioButtons} />
-      <Paragraph>
-        <Button label='Beställ!'
-          type='submit'
-          primary={true} />
-      </Paragraph>
-    </Form>
-  );
+        </Header>
+        <Field name='package' label='Välj paket' component={this.renderSelect} />
+        <Field name='name' label='Förnamn' component={renderTextbox} />
+        <Field name='surname' label='Efternamn' component={renderTextbox} />
+        <Field name='email' label='E-post' component={renderTextbox} />
+        <Field name='childsName' label='Barnets förnamn' component={renderTextbox} />
+        {isStandard && <Field name='childsMiddleName' label='Barnets mellannamn' component={renderTextbox} />}
+        <Field name='childsAge' label='Barnets ålder' component={renderNumberbox} />
+        {isStandard && <Field name='childsSimpleIllness' label='Enklare sjukdom' component={renderSimpleIllnesses} />}
+        {isPremium && <Field name='childsDifficultIllness' label='Svårare sjukdom' component={renderDifficultIllnesses} />}
+        {isPremium && <Field name='childsAccident' label='Olycka (datum för olyckan)' component={renderDateTime} />}
+        <Field name='invoicing' label='Fakturering' component={renderRadioButtons} />
+        <Paragraph>
+          <Button label='Beställ!'
+            type='submit'
+            primary={true} />
+        </Paragraph>
+      </Form>
+    );
+  };
+}
+
+OrderForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired, // From redux-form
+  onSubmit: PropTypes.func.isRequired // From parent
 };
 
 export default reduxForm({
@@ -103,5 +163,6 @@ export default reduxForm({
     package: packages[1],
     invoicing: 'yearly'
   },
-  form: 'order'
+  form: 'order',
+  destroyOnUnmount: false
 })(OrderForm);

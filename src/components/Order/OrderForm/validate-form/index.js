@@ -1,4 +1,5 @@
 import { SubmissionError } from 'redux-form';
+import { SimpleIllnesses, DifficultIllness } from '../constants';
 
 export default function (values) {
   const errors = {
@@ -13,26 +14,34 @@ export default function (values) {
     errors.name = 'Har du inget namn?';
   }
 
-  if(!values.surname) {
+  if (!values.surname) {
     errors.surname = 'Vi behöver ett efternamn';
   }
 
-  if(!values.email) {
+  if (!values.email) {
     errors.email = 'Vi behöver kunna nå dig';
   }
 
-  if(!values.childsName) {
+  if (!values.childsName) {
     errors.childsName = 'Detta får du ju bara inte glömma!';
   }
 
-  if(!values.childsAge) {
+  if (!values.childsAge) {
     errors.childsAge = 'Ditt barn behöver en ålder!';
-  } else if(values.childsAge >= 18) {
+  } else if (values.childsAge >= 18) {
     errors.childsAge = 'Du försöker beställa en vuxen...';
   }
 
-  if(!values.invoicing) {
+  if (!values.invoicing) {
     errors.invoicing = 'Vill du inte betala, eller?!';
+  }
+
+  if(values.childsSimpleIllness && !SimpleIllnesses.includes(values.childsSimpleIllness)) {
+    errors.childsSimpleIllness = 'Okänd sjukdom!';
+  }
+
+  if(values.childsDifficultIllness && !DifficultIllness.includes(values.childsDifficultIllness)) {
+    errors.childsDifficultIllness = 'Okänd sjukdom!';
   }
 
   if (Object.keys(errors).length > 1) {

@@ -20,3 +20,5 @@ export {default as Menu} from 'grommet/components/Menu';
 export {default as Select} from 'grommet/components/Select';
 export {default as NumberInput} from 'grommet/components/NumberInput';
 export {default as RadioButton} from 'grommet/components/RadioButton';
+export {default as SearchInput} from 'grommet/components/SearchInput';
+export {default as DateTime} from 'grommet/components/DateTime';
