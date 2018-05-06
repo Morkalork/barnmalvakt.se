@@ -6,8 +6,9 @@ import SocialImage from '../../../../assets/images/social-media.jpg';
 
 const Faq1 = () => {
   return <Box flex={true}
-    direction='row'
     align='start'
+    direction='row'
+    wrap={true}
     justify='center'>
     <Card thumbnail={LawImage}
       margin='medium'

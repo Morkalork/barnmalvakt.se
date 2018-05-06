@@ -14,7 +14,7 @@ const WhiteBox = styled(Box) `
 const Top = () => {
   return <WhiteBox full={{ 'horizontal': true }} align='center'>
     <Box size='xxlarge'>
-      <Header>
+      <Header direction='row'>
         <Title>
           <Anchor path='/'>
             Barnmålvakt
@@ -22,13 +22,12 @@ const Top = () => {
         </Title>
         <Box flex={true}
           justify='end'
-          direction='row'
-          responsive={false}>
+          direction='row'>
           <Menu icon={<Actions />}
             dropAlign={{ 'right': 'right' }}>
-            <Anchor href='#'>Intro</Anchor>
-            <Anchor href='#'>Info</Anchor>
-            <Anchor href='#'>Into</Anchor>
+            <Anchor href='#'>Home</Anchor>
+            <Anchor href='#/order'>Order</Anchor>
+            <Anchor href='#/faq'>General FAQ</Anchor>
           </Menu>
         </Box>
       </Header>

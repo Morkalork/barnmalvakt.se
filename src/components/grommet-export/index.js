@@ -1,3 +1,4 @@
+// Components
 export {default as Paragraph} from 'grommet/components/Paragraph';
 export {default as App} from 'grommet/components/App';
 export {default as Article} from 'grommet/components/Article';
@@ -22,3 +23,7 @@ export {default as NumberInput} from 'grommet/components/NumberInput';
 export {default as RadioButton} from 'grommet/components/RadioButton';
 export {default as SearchInput} from 'grommet/components/SearchInput';
 export {default as DateTime} from 'grommet/components/DateTime';
+export {default as Headline} from 'grommet/components/Headline';
+
+// Utils
+export {default as Responsive} from 'grommet/utils/Responsive';

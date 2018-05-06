@@ -6,8 +6,9 @@ import ChildImage from '../../../../assets/images/child.jpg';
 
 const Faq2 = () => {
   return <Box flex={true}
-    direction='row'
     align='start'
+    direction='row'
+    wrap={true}
     justify='center'>
     <Card thumbnail={SickImage}
       margin='medium'

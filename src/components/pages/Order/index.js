@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../../grommet-export';
+import { Section, Box, List, ListItem, Heading, Headline, Paragraph, Article } from '../../grommet-export';
 import FormCheckmarkIcon from 'grommet/components/icons/base/FormCheckmark';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 import styled from 'styled-components';
 import OrderForm from './OrderForm';
 import { withRouter } from 'react-router-dom';
+import ScrollToTop from '../../ScrollToTop';
 
 const CheckMark = styled(FormCheckmarkIcon) `
   stroke: #32CD32;
@@ -34,7 +35,7 @@ const featureList = [
 
 const price = [500, 2000, 5000];
 
-const Order = ({history}) => {
+const Order = ({ history }) => {
   const boxes = [];
   for (let i = 0; i < 3; i++) {
     const box = <Box key={i} margin='medium'>
@@ -59,14 +60,21 @@ const Order = ({history}) => {
   }
 
   return <Article>
-    <Section flex={true} justify='center' align='center' alignContent='between' direction='row'>
-      {boxes}
-    </Section>
-    <Section flex={true} justify='center' align='center' alignContent='between' direction='row'>
-      <OrderForm onSubmit={() => {
-        history.push('/approve');
-      }} />
-    </Section>
+    <ScrollToTop>
+      <Section margin={{'top': 'large'}}>
+        <Headline strong={true} margin={'large'} align='center'>
+          Välj paket &amp; beställ!
+        </Headline>
+      </Section>
+      <Section flex={true} justify='center' align='center' alignContent='between' direction='row' wrap={true}>
+        {boxes}
+      </Section>
+      <Section flex={true} justify='center' align='center' alignContent='between'>
+        <OrderForm onSubmit={() => {
+          history.push('/approve');
+        }} />
+      </Section>
+    </ScrollToTop>
   </Article>
 };
 

@@ -3,12 +3,12 @@ import { Footer, Title, Paragraph, Box } from '../grommet-export';
 
 
 const Bottom = () => {
-  return <Box size='xxlarge'>
+  return <Box size='xxlarge' margin={{'top': 'large'}}>
     <Footer justify='between'>
       <Title>
         barnmalvakt.se
     </Title>
-      <Box direction='row'
+      <Box responsive={false}
         align='center'
         pad={{ 'between': 'medium' }}>
         <Paragraph margin='none'>

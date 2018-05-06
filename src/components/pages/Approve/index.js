@@ -10,6 +10,7 @@ const Approve = ({
   surname,
   email,
   childsName,
+  childsBloodType,
   childsAge,
   childsMiddleName,
   childsSimpleIllness,
@@ -20,13 +21,14 @@ const Approve = ({
     { key: 'Efternamn', val: surname },
     { key: 'E-post', val: email },
     { key: 'Barnets namn', val: childsName },
+    { key: 'Barnets blodtyp', val: childsBloodType },
     { key: 'Barnets ålder', val: childsAge },
     { key: 'Enklare sjukdom', val: childsSimpleIllness },
     { key: 'Svårare sjukdom', val: childsDifficultIllness },
     { key: 'Olycksdatum', val: childsAccident }
   ];
 
-  return <Article>
+  return <Article margin={{ 'top': 'large' }}>
     <Heading margin={'large'}>
       Godkänn och betala!
     </Heading>
@@ -42,15 +44,14 @@ const Approve = ({
     </List>
     <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen 'Godkänn', annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
     <Box flex={true}
-      direction='row'
-      justify='between'>
-        <Button label='Tillbaks...'
-          path='/Order'
-          secondary={true} />
-        <Button label='Godkänn!'
-          path='/Approved'
-          primary={true} />  
-      </Box>
+      justify='between' align='center'>
+      <Button label='Tillbaks...'
+        path='/Order'
+        secondary={true} />
+      <Button label='Godkänn!'
+        path='/Approved'
+        primary={true} />
+    </Box>
   </Article>
 };
 
@@ -61,6 +62,7 @@ Approve.propTypes = {
   surname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   childsName: PropTypes.string.isRequired,
+  childsBloodType: PropTypes.string.isRequired,
   childsAge: PropTypes.number.isRequired,
   childsMiddleName: PropTypes.string,
   childsSimpleIllness: PropTypes.string,
@@ -82,6 +84,7 @@ export default connect((state) => {
     surname: order.values.surname,
     email: order.values.email,
     childsName: order.values.childsName,
+    childsBloodType: order.values.childsBloodType,
     childsAge: order.values.childsAge,
     childsMiddleName: order.values.childsMiddleName,
     childsSimpleIllness: order.values.childsSimpleIllness,

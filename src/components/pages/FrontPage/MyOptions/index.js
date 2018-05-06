@@ -16,7 +16,6 @@ const MyOptions = () => {
       </Heading>
     <Box
       flex={true}
-      direction='row'
       align='center'
       justify='between'>
       <Box>

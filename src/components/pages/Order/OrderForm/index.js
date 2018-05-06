@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Header, Heading, FormFields, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
 import { Field, reduxForm } from 'redux-form';
 import validateForm from './validate-form';
-import { SimpleIllnesses, DifficultIllness } from './constants';
+import { SimpleIllnesses, DifficultIllness, BloodTypes } from './constants';
 
 const packages = [{
   label: 'Basic',
@@ -86,6 +86,7 @@ const renderSearchbox = ({
 
 const renderSimpleIllnesses = (fields) => renderSearchbox(fields, SimpleIllnesses);
 const renderDifficultIllnesses = (fields) => renderSearchbox(fields, DifficultIllness);
+const renderBloodTypes = (fields) => renderSearchbox(fields, BloodTypes);
 
 class OrderForm extends Component {
   constructor(props) {
@@ -137,6 +138,7 @@ class OrderForm extends Component {
         <Field name='surname' label='Efternamn' component={renderTextbox} />
         <Field name='email' label='E-post' component={renderTextbox} />
         <Field name='childsName' label='Barnets förnamn' component={renderTextbox} />
+        <Field name='childsBloodType' label='Barnets blodgrupp' component={renderBloodTypes} />
         {isStandard && <Field name='childsMiddleName' label='Barnets mellannamn' component={renderTextbox} />}
         <Field name='childsAge' label='Barnets ålder' component={renderNumberbox} />
         {isStandard && <Field name='childsSimpleIllness' label='Enklare sjukdom' component={renderSimpleIllnesses} />}
