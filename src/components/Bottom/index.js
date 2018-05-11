@@ -31,7 +31,7 @@ const Bottom = ({isMobile}) => {
   </ColoredBox>
 };
 
-Bottom.PropTypes = {
+Bottom.propTypes = {
   isMobile: PropTypes.bool.isRequired
 };
 

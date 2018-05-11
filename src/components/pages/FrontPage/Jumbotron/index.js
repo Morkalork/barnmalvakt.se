@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Section, Heading, Box, Paragraph } from '../../../grommet-export';
 import styled from 'styled-components';
 import BackgroundImage from '../../../../assets/images/jumbotron.jpg';
+import BackgroundImageMobile from '../../../../assets/images/jumbotron_mobile.jpg';
 
-const StyledSection = styled(Section) `
-  background-image: url(${BackgroundImage});
-  background-size: cover;
-  background-position: center center;
-`;
 const WhiteBox = styled(Box) `
   background-color: rgba(255, 255, 255, 0.75);
 `;
@@ -17,7 +15,15 @@ const TopBox = styled(Box) `
   margin-right: 5rem;
 `;
 
-const Jumbotron = () => {
+const getStyledSection = (isMobile) => styled(Section) `
+  background-image: url(${isMobile ? BackgroundImageMobile : BackgroundImage});
+  background-size: cover;
+  background-position: center center;
+`;
+
+const Jumbotron = ({ isMobile }) => {
+  const StyledSection = getStyledSection(isMobile);
+
   return <StyledSection
     full={true}
     justify='between'>
@@ -49,4 +55,10 @@ const Jumbotron = () => {
   </StyledSection>
 };
 
-export default Jumbotron;
+Jumbotron.propTypes = {
+  isMobile: PropTypes.bool.isRequired
+};
+
+export default connect((state) => ({
+  isMobile: state.root.isMobile
+}))(Jumbotron);
