@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { Footer, Title, Paragraph, Box } from '../grommet-export';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import { Footer, Heading, Paragraph, Box } from '../grommet-export';
+import styled from 'styled-components';
 
+const SmallParagraph = styled(Paragraph)`
+  max-width: 60%;
+`;
 
-const Bottom = () => {
-  return <Box size='xxlarge' margin={{'top': 'large'}}>
+const ColoredBox = styled(Footer)`
+  background-color: #eaeaea;
+`;
+
+const Bottom = ({isMobile}) => {
+  return <ColoredBox size='xxlarge' margin={{ 'top': 'large' }} pad='medium'>
     <Footer justify='between'>
-      <Title>
-        barnmalvakt.se
-    </Title>
+        <SmallParagraph size={isMobile ? 'small' : 'medium'} >
+          <em>"Ge dig själv kärlek, mera kärlek och ännu mera kärlek så kommer pengarna av sig själv."</em>
+          <br />
+          <strong> - Okänd barnboksförfattare</strong>
+        </SmallParagraph>
       <Box responsive={false}
         align='center'
         pad={{ 'between': 'medium' }}>
@@ -16,7 +28,13 @@ const Bottom = () => {
         </Paragraph>
       </Box>
     </Footer>
-  </Box>
+  </ColoredBox>
 };
 
-export default Bottom;
+Bottom.PropTypes = {
+  isMobile: PropTypes.bool.isRequired
+};
+
+export default connect((state) => ({
+  isMobile: state.root.isMobile
+}))(Bottom);

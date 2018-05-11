@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Title, Box, Menu, Anchor } from '../grommet-export';
+import { Header, Title, Box, Anchor } from '../grommet-export';
 import { Actions } from 'grommet-icons';
 import styled from 'styled-components';
 
@@ -14,22 +14,12 @@ const WhiteBox = styled(Box) `
 const Top = () => {
   return <WhiteBox full={{ 'horizontal': true }} align='center'>
     <Box size='xxlarge'>
-      <Header direction='row'>
+      <Header direction='row' justify='center'>
         <Title>
           <Anchor path='/'>
-            Barnmålvakt
+            Barnmålvakt.se
           </Anchor>
         </Title>
-        <Box flex={true}
-          justify='end'
-          direction='row'>
-          <Menu icon={<Actions />}
-            dropAlign={{ 'right': 'right' }}>
-            <Anchor href='#'>Home</Anchor>
-            <Anchor href='#/order'>Order</Anchor>
-            <Anchor href='#/faq'>General FAQ</Anchor>
-          </Menu>
-        </Box>
       </Header>
     </Box>
   </WhiteBox>

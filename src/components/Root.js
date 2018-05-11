@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import { App, Article, Responsive } from './grommet-export';
-import '../../node_modules/grommet-css';
+import '../styling/index.scss';
 import Top from './Top';
 import Bottom from './Bottom';
 import styled from 'styled-components';
@@ -12,6 +13,7 @@ import Faq from './pages/FrontPage/Faq';
 import GeneralFaq from './pages/GeneralFaq';
 import Approve from './pages/Approve';
 import Approved from './pages/Approved';
+import { toggleResponsiveness } from './actions';
 
 class Root extends Component {
   constructor() {
@@ -29,7 +31,8 @@ class Root extends Component {
   }
 
   onResponsive(e) {
-    console.log('E: ', e);
+    console.log('IS RESPONSIVE: ', e);
+    this.props.dispatch(toggleResponsiveness(e));
   }
 
   render() {
@@ -54,4 +57,4 @@ Root.contextTypes = {
   location: PropTypes.object
 };
 
-export default Root;
+export default connect()(Root);

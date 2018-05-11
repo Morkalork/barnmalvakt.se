@@ -40,7 +40,7 @@ const Jumbotron = () => {
           barnmalvakt.se
         </Heading>
         <Heading
-          tag='h3'
+          tag='h5'
           uppercase={true}>
           <em>"I en värld av Fake News, ha en Fake Family"</em>
         </Heading>

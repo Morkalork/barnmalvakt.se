@@ -3,7 +3,7 @@ import { Article, Paragraph, Image, Heading } from '../../grommet-export';
 import swatImage from '../../../assets/images/swat.jpg';
 
 const Approved = () => {
-  return <Article margin={{'top': 'large'}}>
+  return <Article margin={{'top': 'large'}} pad='medium'>
     <Heading margin={'large'}>
       Färdig!
     </Heading>
@@ -12,7 +12,6 @@ const Approved = () => {
     <Paragraph margin={'large'}>Om det knackar så behöver du inte ens öppna...</Paragraph>
     <Image src={swatImage}
       alt='You can expect a visit soon!'
-      align='center'
       caption='Staten är din vän!' />
   </Article>
 };

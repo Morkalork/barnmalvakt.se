@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Section, Box, List, ListItem, Heading, Headline, Paragraph, Article } from '../../grommet-export';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../../grommet-export';
 import FormCheckmarkIcon from 'grommet/components/icons/base/FormCheckmark';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 import styled from 'styled-components';
@@ -35,7 +37,7 @@ const featureList = [
 
 const price = [500, 2000, 5000];
 
-const Order = ({ history }) => {
+const Order = ({ history, isMobile }) => {
   const boxes = [];
   for (let i = 0; i < 3; i++) {
     const box = <Box key={i} margin='medium'>
@@ -48,23 +50,26 @@ const Order = ({ history }) => {
       </Heading>
       <List>
         {featureList.map((feature, index) => {
-          return <ListItem justify='between' separator='horizontal' key={index}>
+          return <ListItem justify='between' separator='horizontal' key={index} responsive={false}>
             <span title={feature.title}>{feature.label}</span>
             <span>{feature.level <= (i + 1) ? <CheckMark /> : <CloseMark />}</span>
           </ListItem>
         })}
       </List>
-      <Paragraph>{price[i]}kr/mån</Paragraph>
+      <Paragraph align='center'>{price[i]}kr/mån</Paragraph>
     </Box>;
     boxes.push(box);
   }
 
-  return <Article>
+  return <Article margin={{'top': 'large'}} pad='medium'>
     <ScrollToTop>
       <Section margin={{'top': 'large'}}>
-        <Headline strong={true} margin={'large'} align='center'>
+        <Heading strong={true} 
+          tag={isMobile ? 'h5' : 'h2'}
+          uppercase={true}
+          align='center'>
           Välj paket &amp; beställ!
-        </Headline>
+        </Heading>
       </Section>
       <Section flex={true} justify='center' align='center' alignContent='between' direction='row' wrap={true}>
         {boxes}
@@ -78,4 +83,11 @@ const Order = ({ history }) => {
   </Article>
 };
 
-export default withRouter(Order);
+Order.propTypes = {
+  history: PropTypes.object.isRequired, // From react-router
+  isMobile: PropTypes.bool.isRequired
+};
+
+export default connect((state) => ({
+  isMobile: state.root.isMobile
+}))(withRouter(Order));

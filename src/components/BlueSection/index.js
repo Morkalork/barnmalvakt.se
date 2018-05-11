@@ -16,7 +16,7 @@ const ColoredSection = styled(Section) `
 `;
 
 const BlueSection = ({children}) => {
-  return <ColoredSection justify='center' align='center' full={true}>
+  return <ColoredSection justify='center' align='center' full={true} pad='small'>
     <Box 
       size='xxlarge' 
       flex={true}

@@ -14,7 +14,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
       title: 'Barnmålvakt',
-      
+
     }),
     //Auto replacement of page when i save some file, even css
     new webpack.HotModuleReplacementPlugin()
@@ -42,9 +42,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        //Follow instructions at https://github.com/roylee0704/react-flexbox-grid
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&' +
+        'includePaths[]=' +
+        (encodeURIComponent(
+          path.resolve(process.cwd(), './node_modules')
+        )) +
+        '&includePaths[]=' +
+        (encodeURIComponent(
+            path.resolve( process.cwd(),
+              './node_modules/grommet/node_modules'))
+        )
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Header, Heading, FormFields, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
 import { Field, reduxForm } from 'redux-form';
@@ -117,7 +118,7 @@ class OrderForm extends Component {
 
   handleSubmit(values) {
     validateForm(values);
-    
+
     this.props.onSubmit();
   }
 
@@ -127,9 +128,10 @@ class OrderForm extends Component {
     const isPremium = this.state.package > packages[1].value;
 
     return (
-      <Form onSubmit={handleSubmit(this.handleSubmit)}>
-        <Header>
-          <Heading>
+      <Form onSubmit={handleSubmit(this.handleSubmit)} compact={this.props.isMobile}>
+        <Header justify='center'>
+          <Heading strong={true}
+            tag={this.props.isMobile ? 'h5' : 'h2'}>
             Beställ nu!
         </Heading>
         </Header>
@@ -160,11 +162,13 @@ OrderForm.propTypes = {
   onSubmit: PropTypes.func.isRequired // From parent
 };
 
-export default reduxForm({
+export default connect((state) => ({
+  isMobile: state.root.isMobile
+}))(reduxForm({
   initialValues: {
     package: packages[1],
     invoicing: 'yearly'
   },
   form: 'order',
   destroyOnUnmount: false
-})(OrderForm);
+})(OrderForm));
