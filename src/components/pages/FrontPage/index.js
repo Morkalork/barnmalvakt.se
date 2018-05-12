@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Article } from '../../grommet-export';
 import MyRights from './MyRights';
 import MyOptions from './MyOptions';
@@ -13,7 +13,7 @@ const FrontPage = () => {
     <MyOptions />
     <Faq />
     <Order />
-  </Article>
+  </Article>;
 };
 
 export default FrontPage;

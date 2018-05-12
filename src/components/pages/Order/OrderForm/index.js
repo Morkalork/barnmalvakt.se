@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Header, Heading, FormFields, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
+import { Form, Header, Heading, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
 import { Field, reduxForm } from 'redux-form';
 import validateForm from './validate-form';
 import { SimpleIllnesses, DifficultIllness, BloodTypes } from './constants';
@@ -38,8 +38,8 @@ const renderRadioButtons = ({
       label='Årsvis (15% rabatt!)'
       onChange={(e) => input.onChange(e.target.value)}
       checked={input.value === 'yearly'} />
-  </FormField>
-}
+  </FormField>;
+};
 
 const renderTextbox = ({
   input,
@@ -48,7 +48,7 @@ const renderTextbox = ({
   return <FormField label={label}
     error={error}>
     <TextInput value={input.value} onDOMChange={(e) => input.onChange(e.target.value)} />
-  </FormField>
+  </FormField>;
 };
 
 const renderNumberbox = ({
@@ -58,7 +58,7 @@ const renderNumberbox = ({
   return <FormField label={label}
     error={error}>
     <NumberInput value={input.value} onChange={(e) => input.onChange(e.target.value)} />
-  </FormField>
+  </FormField>;
 };
 
 const renderDateTime = ({
@@ -68,21 +68,21 @@ const renderDateTime = ({
   return <FormField label={label}
     error={error}>
     <DateTime value={input.value} onChange={(newDate) => input.onChange(newDate)} />
-  </FormField>
+  </FormField>;
 };
 
 const renderSearchbox = ({
   input,
   label,
-  meta: { touched, error, warning } },
-  suggestions) => {
+  meta: { touched, error, warning },
+  suggestions}) => {
   return <FormField label={label}
     error={error}>
     <SearchInput
       value={input.value}
       suggestions={suggestions}
       onSelect={({ target, suggestion }) => input.onChange(suggestion)} />
-  </FormField>
+  </FormField>;
 };
 
 const renderSimpleIllnesses = (fields) => renderSearchbox(fields, SimpleIllnesses);
@@ -113,7 +113,7 @@ class OrderForm extends Component {
           input.onChange(option);
           this.setState({ package: option.value });
         }} />
-    </FormField>
+    </FormField>;
   }
 
   handleSubmit(values) {
@@ -133,7 +133,7 @@ class OrderForm extends Component {
           <Heading strong={true}
             tag={this.props.isMobile ? 'h5' : 'h2'}>
             Beställ nu!
-        </Heading>
+          </Heading>
         </Header>
         <Field name='package' label='Välj paket' component={this.renderSelect} />
         <Field name='name' label='Förnamn' component={renderTextbox} />

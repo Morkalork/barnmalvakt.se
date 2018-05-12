@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Card, Anchor } from '../../../grommet-export';
+import React from 'react';
+import { Box, Card } from '../../../grommet-export';
 import SickImage from '../../../../assets/images/sick.jpg';
 import AccidentImage from '../../../../assets/images/accident.jpg';
 import ChildImage from '../../../../assets/images/child.jpg';
@@ -25,7 +25,7 @@ const Faq2 = () => {
       label='Utseende'
       heading='Jag vill inte ha en ful unge!'
       description='Självklart är alla våra barn söta och underbara, detta är ingen hemsk tjänst. Vi garanterar att du kommer att bli nöjd!' />
-  </Box>
+  </Box>;
 };
 
 export default Faq2;

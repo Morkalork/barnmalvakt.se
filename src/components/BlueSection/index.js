@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Button } from '../grommet-export';
-import { Cart } from 'grommet-icons';
+import React from 'react';
+import { Section, Box } from '../grommet-export';
 import styled from 'styled-components';
 import BlueBackgroundImage from '../../assets/images/blue-background.png';
 
-const ColoredSection = styled(Section) `
+const ColoredSection = styled(Section)`
   background-color: #D1F4FF;
   background-image: url(${BlueBackgroundImage});
   background-position: right 4px bottom 4px;
@@ -17,14 +16,14 @@ const ColoredSection = styled(Section) `
 
 const BlueSection = ({children}) => {
   return <ColoredSection justify='center' align='center' full={true} pad='small'>
-    <Box 
-      size='xxlarge' 
+    <Box
+      size='xxlarge'
       flex={true}
       justify='center'
       align='center'>
       {children}
     </Box>
-  </ColoredSection>
+  </ColoredSection>;
 };
 
 export default BlueSection;

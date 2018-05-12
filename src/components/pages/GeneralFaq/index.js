@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Card, Anchor } from '../../grommet-export';
+import React from 'react';
+import { Section, Heading } from '../../grommet-export';
 import Faq1 from './faq-1';
 import Faq2 from './faq-2';
 
@@ -15,7 +15,7 @@ const GeneralFaq = () => {
     </Heading>
     <Faq1 />
     <Faq2 />
-  </Section>
+  </Section>;
 };
 
 export default GeneralFaq;

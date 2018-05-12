@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../../grommet-export';
 import { connect } from 'react-redux';
@@ -33,7 +33,7 @@ const Approve = ({
     <ScrollToTop>
       <Heading margin={'large'}>
         Godkänn och betala!
-    </Heading>
+      </Heading>
       <Paragraph>Tack för att du valt att använda dig av vår tjänst! Vi tror att du kommer att bli jättenöjd med ditt paket ({selectedPackage})!</Paragraph>
       <Paragraph>Titta igenom uppgifterna ytterligare en gång här under och tryck sedan godkänn så kommer ett e-mail med faktura att skickas ut till dig!</Paragraph>
       <List>
@@ -44,9 +44,9 @@ const Approve = ({
           </ListItem>
         )}
       </List>
-      <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen 'Godkänn', annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
+      <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen ‘Godkänn‘, annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
       <Box flex={true}
-        justify='between' 
+        justify='between'
         align='center'
         pad={{'between': 'small'}}>
         <Button label='Tillbaks...'
@@ -57,7 +57,7 @@ const Approve = ({
           primary={true} />
       </Box>
     </ScrollToTop>
-  </Article>
+  </Article>;
 };
 
 Approve.propTypes = {

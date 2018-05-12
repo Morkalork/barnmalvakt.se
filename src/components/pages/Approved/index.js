@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Article, Paragraph, Image, Heading } from '../../grommet-export';
 import swatImage from '../../../assets/images/swat.jpg';
 
@@ -13,7 +13,7 @@ const Approved = () => {
     <Image src={swatImage}
       alt='You can expect a visit soon!'
       caption='Staten är din vän!' />
-  </Article>
+  </Article>;
 };
 
 export default (Approved);

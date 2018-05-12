@@ -5,11 +5,9 @@ import { App, Article, Responsive } from './grommet-export';
 import '../styling/index.scss';
 import Top from './Top';
 import Bottom from './Bottom';
-import styled from 'styled-components';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import FrontPage from './pages/FrontPage';
 import Order from './pages/Order';
-import Faq from './pages/FrontPage/Faq';
 import GeneralFaq from './pages/GeneralFaq';
 import Approve from './pages/Approve';
 import Approved from './pages/Approved';
@@ -31,7 +29,6 @@ class Root extends Component {
   }
 
   onResponsive(e) {
-    console.log('IS RESPONSIVE: ', e);
     this.props.dispatch(toggleResponsiveness(e));
   }
 
@@ -48,7 +45,7 @@ class Root extends Component {
           <Bottom />
         </Article>
       </App>
-    </Router>
+    </Router>;
   };
 }
 

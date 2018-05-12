@@ -36,11 +36,11 @@ export default function (values) {
     errors.invoicing = 'Vill du inte betala, eller?!';
   }
 
-  if(values.childsSimpleIllness && !SimpleIllnesses.includes(values.childsSimpleIllness)) {
+  if (values.childsSimpleIllness && !SimpleIllnesses.includes(values.childsSimpleIllness)) {
     errors.childsSimpleIllness = 'Okänd sjukdom!';
   }
 
-  if(values.childsDifficultIllness && !DifficultIllness.includes(values.childsDifficultIllness)) {
+  if (values.childsDifficultIllness && !DifficultIllness.includes(values.childsDifficultIllness)) {
     errors.childsDifficultIllness = 'Okänd sjukdom!';
   }
 

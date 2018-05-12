@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Section, Heading, Anchor } from '../../../grommet-export';
 import Faq1 from '../../GeneralFaq/faq-1';
 
@@ -19,7 +19,7 @@ const Faq = () => {
       reverse={true}
       align='center'
       label='Undrar du över något mer?' />
-  </Section>
+  </Section>;
 };
 
 export default Faq;

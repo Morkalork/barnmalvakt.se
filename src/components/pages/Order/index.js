@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../../grommet-export';
@@ -9,10 +9,10 @@ import OrderForm from './OrderForm';
 import { withRouter } from 'react-router-dom';
 import ScrollToTop from '../../ScrollToTop';
 
-const CheckMark = styled(FormCheckmarkIcon) `
+const CheckMark = styled(FormCheckmarkIcon)`
   stroke: #32CD32;
 `;
-const CloseMark = styled(FormCloseIcon) `
+const CloseMark = styled(FormCloseIcon)`
 stroke: #DB2525;
 `;
 
@@ -32,7 +32,7 @@ const featureList = [
   { label: 'Svårare sjukdom', level: 3, title: 'Ulcerös Kolit? Reumatism? Kronisk Bronkit? Vi har en lista, din unge kan ha det om du beställer det!' },
   { label: 'Lånebarn, 3 tillfällen', level: 3, title: 'Låna ett barn att ta med till jobbet eller vännerna för att visa upp. Max 6 timmar per tillfälle.' },
   { label: '"Facebook Family"', level: 3, title: 'Få speciellt genererade bilder med dig och barnet tillsammans i Thailand, Ishotellet i Jukkasjärvi eller varför inte på en valsafari i Polen? Dela som en galning!' },
-  { label: 'Olycka', level: 3, title: 'Ha en olycka med barnet, brutet ben, påkörd av en bil eller nafsad av en bäver, vi fejkar intyget till den slumpmässigt utvalda olyckan!' },
+  { label: 'Olycka', level: 3, title: 'Ha en olycka med barnet, brutet ben, påkörd av en bil eller nafsad av en bäver, vi fejkar intyget till den slumpmässigt utvalda olyckan!' }
 ];
 
 const price = [500, 2000, 5000];
@@ -53,7 +53,7 @@ const Order = ({ history, isMobile }) => {
           return <ListItem justify='between' separator='horizontal' key={index} responsive={false}>
             <span title={feature.title}>{feature.label}</span>
             <span>{feature.level <= (i + 1) ? <CheckMark /> : <CloseMark />}</span>
-          </ListItem>
+          </ListItem>;
         })}
       </List>
       <Paragraph align='center'>{price[i]}kr/mån</Paragraph>
@@ -64,7 +64,7 @@ const Order = ({ history, isMobile }) => {
   return <Article margin={{'top': 'large'}} pad='medium'>
     <ScrollToTop>
       <Section margin={{'top': 'large'}}>
-        <Heading strong={true} 
+        <Heading strong={true}
           tag={isMobile ? 'h5' : 'h2'}
           uppercase={true}
           align='center'>
@@ -80,7 +80,7 @@ const Order = ({ history, isMobile }) => {
         }} />
       </Section>
     </ScrollToTop>
-  </Article>
+  </Article>;
 };
 
 Order.propTypes = {

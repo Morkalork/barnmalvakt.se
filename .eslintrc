@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  // 0 - turn rule off
+  // 1 - rule generates warnings
+  // 2 - rule generates errors
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ],
+    "space-before-function-paren": 0,
+    "eol-last": 0,
+    "react/prop-types": 0
+  }
+}

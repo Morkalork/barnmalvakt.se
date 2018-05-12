@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Section, Box, Heading, Paragraph, Card, Anchor } from '../../../grommet-export';
+import React from 'react';
+import { Box, Card } from '../../../grommet-export';
 import LawImage from '../../../../assets/images/law.jpg';
 import SchoolImage from '../../../../assets/images/school.jpg';
 import SocialImage from '../../../../assets/images/social-media.jpg';
@@ -25,7 +25,7 @@ const Faq1 = () => {
       label='Socialt'
       heading='Får jag fina bilder att dela?'
       description='Tilläggstjänsten "Facebook Family" genererar bildpaket från semestrar, resor och andra events som du kan dela i sociala medier.' />
-  </Box>
+  </Box>;
 };
 
 export default Faq1;

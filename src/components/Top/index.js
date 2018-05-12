@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Header, Title, Box, Anchor } from '../grommet-export';
-import { Actions } from 'grommet-icons';
 import styled from 'styled-components';
 
-const WhiteBox = styled(Box) `
+const WhiteBox = styled(Box)`
   background-color: #fff;
   position: fixed;
   z-index: 99;
@@ -22,7 +21,7 @@ const Top = () => {
         </Title>
       </Header>
     </Box>
-  </WhiteBox>
+  </WhiteBox>;
 };
 
 export default Top;

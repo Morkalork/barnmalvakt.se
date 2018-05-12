@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Section, Heading, Box, Paragraph } from '../../../grommet-export';
+import { Section, Heading, Box } from '../../../grommet-export';
 import styled from 'styled-components';
 import BackgroundImage from '../../../../assets/images/jumbotron.jpg';
 import BackgroundImageMobile from '../../../../assets/images/jumbotron_mobile.jpg';
 
-const WhiteBox = styled(Box) `
+const WhiteBox = styled(Box)`
   background-color: rgba(255, 255, 255, 0.75);
 `;
 
-const TopBox = styled(Box) `
+const TopBox = styled(Box)`
   margin-top: 10rem;
   margin-right: 5rem;
 `;
 
-const getStyledSection = (isMobile) => styled(Section) `
+const getStyledSection = (isMobile) => styled(Section)`
   background-image: url(${isMobile ? BackgroundImageMobile : BackgroundImage});
   background-size: cover;
   background-position: center center;
@@ -48,11 +48,11 @@ const Jumbotron = ({ isMobile }) => {
         <Heading
           tag='h5'
           uppercase={true}>
-          <em>"I en värld av Fake News, ha en Fake Family"</em>
+          <em>‘I en värld av Fake News, ha en Fake Family‘</em>
         </Heading>
       </Box>
     </WhiteBox>
-  </StyledSection>
+  </StyledSection>;
 };
 
 Jumbotron.propTypes = {
