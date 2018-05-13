@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactGA from 'react-ga';
 import {connect} from 'react-redux';
 import { App, Article, Responsive } from './grommet-export';
 import '../styling/index.scss';
@@ -12,6 +13,8 @@ import GeneralFaq from './pages/GeneralFaq';
 import Approve from './pages/Approve';
 import Approved from './pages/Approved';
 import { toggleResponsiveness } from './actions';
+
+ReactGA.initialize('UA-55751818-4');
 
 class Root extends Component {
   constructor() {
@@ -32,8 +35,12 @@ class Root extends Component {
     this.props.dispatch(toggleResponsiveness(e));
   }
 
+  onRouterUpdate() {
+    ReactGA.pageview(window.location.hash);
+  }
+
   render() {
-    return <Router>
+    return <Router onUpdate={this.onRouterUpdate}>
       <App centered={false}>
         <Article justify='center' align='center'>
           <Top />

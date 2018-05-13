@@ -1,8 +1,23 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../../grommet-export';
 import { connect } from 'react-redux';
 import ScrollToTop from '../../ScrollToTop';
+
+const handleOnApproveClick = () => {
+  ReactGA.event({
+    category: 'Navigation',
+    action: 'Clicked approved-button'
+  });
+};
+
+const handleOnCancelClick = () => {
+  ReactGA.event({
+    category: 'Navigation',
+    action: 'Clicked cancel order-button'
+  });
+};
 
 const Approve = ({
   selectedPackage,
@@ -51,9 +66,11 @@ const Approve = ({
         pad={{'between': 'small'}}>
         <Button label='Tillbaks...'
           path='/Order'
+          onClick={handleOnCancelClick}
           secondary={true} />
         <Button label='Godkänn!'
           path='/Approved'
+          onClick={handleOnApproveClick}
           primary={true} />
       </Box>
     </ScrollToTop>

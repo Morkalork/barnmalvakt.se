@@ -1,6 +1,14 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Heading, Paragraph, Button } from '../../../grommet-export';
 import BlueSection from '../../../BlueSection';
+
+const handleOnClick = () => {
+  ReactGA.event({
+    category: 'Navigation',
+    action: 'Clicked order-button'
+  });
+};
 
 const Order = () => {
   return <BlueSection justify='center' align='center' full={true}>
@@ -18,6 +26,7 @@ const Order = () => {
     <Paragraph>
       <Button
         label='Beställ!'
+        onClick={handleOnClick}
         path='/order'
         primary={true} />
     </Paragraph>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Header, Heading, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
@@ -71,11 +72,15 @@ const renderDateTime = ({
   </FormField>;
 };
 
-const renderSearchbox = ({
-  input,
-  label,
-  meta: { touched, error, warning },
-  suggestions}) => {
+const renderSearchbox = (
+  fields,
+  suggestions) => {
+  const {
+    input,
+    label,
+    meta: { error }
+  } = fields;
+
   return <FormField label={label}
     error={error}>
     <SearchInput
@@ -88,6 +93,13 @@ const renderSearchbox = ({
 const renderSimpleIllnesses = (fields) => renderSearchbox(fields, SimpleIllnesses);
 const renderDifficultIllnesses = (fields) => renderSearchbox(fields, DifficultIllness);
 const renderBloodTypes = (fields) => renderSearchbox(fields, BloodTypes);
+
+const handleOnClick = () => {
+  ReactGA.event({
+    category: 'Navigation',
+    action: 'Clicked approve-button'
+  });
+};
 
 class OrderForm extends Component {
   constructor(props) {
@@ -150,6 +162,7 @@ class OrderForm extends Component {
         <Paragraph>
           <Button label='Beställ!'
             type='submit'
+            onClick={handleOnClick}
             primary={true} />
         </Paragraph>
       </Form>

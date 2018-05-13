@@ -26,7 +26,7 @@ module.exports = (env, options) => {
       path: path.join(__dirname, publicPath),
       filename: '[name].bundle.js',
       publicPath: '/',
-      sourceMapFilename: '[name].map',
+      sourceMapFilename: '[name].map'
     },
 
     devServer: {
