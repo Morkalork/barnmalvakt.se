@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {injectIntl, intlShape} from 'react-intl';
 import { connect } from 'react-redux';
 import { Section, Heading, Box } from '../../../grommet-export';
 import styled from 'styled-components';
@@ -21,7 +22,7 @@ const getStyledSection = (isMobile) => styled(Section)`
   background-position: center center;
 `;
 
-const Jumbotron = ({ isMobile }) => {
+const Jumbotron = ({ isMobile, intl: {formatMessage} }) => {
   const StyledSection = getStyledSection(isMobile);
 
   return <StyledSection
@@ -31,7 +32,7 @@ const Jumbotron = ({ isMobile }) => {
       <Heading
         tag='h3'
         align='end'>
-        För en ekonomisk jämställdhet...
+        {formatMessage({id: 'frontpage.mainHeader'})}
       </Heading>
     </TopBox>
     <WhiteBox
@@ -43,12 +44,12 @@ const Jumbotron = ({ isMobile }) => {
           tag='h1'
           margin='medium'
           uppercase={true}>
-          barnmalvakt.se
+          {formatMessage({id: 'frontpage.url'})}
         </Heading>
         <Heading
           tag='h5'
           uppercase={true}>
-          <em>‘I en värld av Fake News, ha en Fake Family‘</em>
+          {formatMessage({id: 'frontpage.tagLine'})}
         </Heading>
       </Box>
     </WhiteBox>
@@ -56,9 +57,10 @@ const Jumbotron = ({ isMobile }) => {
 };
 
 Jumbotron.propTypes = {
-  isMobile: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired,
+  intl: intlShape.isRequired
 };
 
-export default connect((state) => ({
+export default injectIntl(connect((state) => ({
   isMobile: state.root.isMobile
-}))(Jumbotron);
+}))(Jumbotron));

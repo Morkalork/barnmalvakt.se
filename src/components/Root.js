@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
-import {connect} from 'react-redux';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import messagesSV from '../locales/sv.json';
+import messagesEN from '../locales/en.json';
+import en from 'react-intl/locale-data/en';
+import sv from 'react-intl/locale-data/sv';
+import { connect } from 'react-redux';
 import { App, Article, Responsive } from './grommet-export';
 import '../styling/index.scss';
 import Top from './Top';
@@ -12,9 +17,18 @@ import Order from './pages/Order';
 import GeneralFaq from './pages/GeneralFaq';
 import Approve from './pages/Approve';
 import Approved from './pages/Approved';
-import { toggleResponsiveness } from './actions';
+import { toggleResponsiveness, loadLanguage } from './actions';
 
+// Starting important stuff up!
+// Google analytics
 ReactGA.initialize('UA-55751818-4');
+
+// React Intl (translations)
+addLocaleData([...en, ...sv]);
+const messages = {
+  'en': messagesEN,
+  'sv': messagesSV
+};
 
 class Root extends Component {
   constructor() {
@@ -25,6 +39,7 @@ class Root extends Component {
 
   componentDidMount() {
     this.responsive = Responsive.start(this.onResponsive);
+    this.props.dispatch(loadLanguage());
   }
 
   componentWillUnmount() {
@@ -40,19 +55,23 @@ class Root extends Component {
   }
 
   render() {
-    return <Router onUpdate={this.onRouterUpdate}>
-      <App centered={false}>
-        <Article justify='center' align='center'>
-          <Top />
-          <Route exact path='/' component={FrontPage} />
-          <Route path='/order' component={Order} />
-          <Route path='/faq' component={GeneralFaq} />
-          <Route path='/approve' component={Approve} />
-          <Route path='/approved' component={Approved} />
-          <Bottom />
-        </Article>
-      </App>
-    </Router>;
+    const language = this.props.lang;
+
+    return <IntlProvider locale={navigator.language} messages={messages[language]}>
+      <Router onUpdate={this.onRouterUpdate}>
+        <App centered={false}>
+          <Article justify='center' align='center'>
+            <Top />
+            <Route exact path='/' component={FrontPage} />
+            <Route path='/order' component={Order} />
+            <Route path='/faq' component={GeneralFaq} />
+            <Route path='/approve' component={Approve} />
+            <Route path='/approved' component={Approved} />
+            <Bottom />
+          </Article>
+        </App>
+      </Router>
+    </IntlProvider>;
   };
 }
 
@@ -61,4 +80,8 @@ Root.contextTypes = {
   location: PropTypes.object
 };
 
-export default connect()(Root);
+export default connect((state) => {
+  return {
+    lang: state.root.lang
+  };
+})(Root);
