@@ -1,4 +1,10 @@
 {
+  "plugins": [
+    "jest"
+  ],
+  "env":  {
+    "jest": true
+  },
   "extends": [
     "standard",
     "plugin:react/recommended"
