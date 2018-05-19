@@ -2,6 +2,7 @@ var path = require('path');
 const webpack = require('webpack');
 const publicPath = '/dist/build/';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
   const isDev = options.mode === 'development';
@@ -19,7 +20,11 @@ module.exports = (env, options) => {
         title: 'Barnmålvakt'
       }),
       // Auto replacement of page when i save some file, even css
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      // Copy our static content
+      new CopyWebpackPlugin([
+        { from: 'src/assets/static', to: path.join(__dirname, publicPath) }
+      ])
     ],
 
     output: {
