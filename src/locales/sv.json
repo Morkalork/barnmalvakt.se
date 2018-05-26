@@ -78,6 +78,7 @@
   "order.how.description": "Processen är så enkel den kan bli! Tryck på knappen här under så kommer du till vårt beställningsformulär. Väl där väljer du vilket paket du vill ha och hur du vill betala och sen är det bara att trycka på beställ-knappen så sköter vi resten! Enkelt, inte sant?",
   "order.how.orderButton": "Beställ!",
   "order.title": "Välj paket & beställ!",
+  "order.currencyPrefix": " ",
   "order.denomination": "kr/mån",
   "order.header1": "Basic",
   "order.header2": "Standard",
@@ -137,7 +138,7 @@
   "order.simpleIllness6": "Eksem",
   "order.simpleIllness7": "Navelkolik",
   "order.simpleIllness8": "Laktosintolerans",
-  "order.simpleIllness9": "Celiaki",
+  "order.simpleIllness9": "Nageltrång",
   "order.simpleIllness10": "Anemi",
 
   "order.difficultIllness1": "Diabetes",

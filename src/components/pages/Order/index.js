@@ -57,7 +57,8 @@ const Order = ({ history, isMobile, intl: { formatMessage } }) => {
           </ListItem>;
         })}
       </List>
-      <Paragraph align='center'>{price[i]}{formatMessage({id: 'order.denomination'})}</Paragraph>
+      <Paragraph align='center'>
+        {formatMessage({id: 'order.currencyPrefix'})}{price[i]}{formatMessage({id: 'order.denomination'})}</Paragraph>
     </Box>;
     boxes.push(box);
   }
