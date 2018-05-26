@@ -1,47 +1,47 @@
 import { SubmissionError } from 'redux-form';
 import { SimpleIllnesses, DifficultIllness } from '../constants';
 
-export default function (values) {
+export default function (values, formatMessage) {
   const errors = {
     _error: 'Submit failed'
   };
 
   if (!values.package) {
-    errors.package = 'Du måste välja ett paket';
+    errors.package = formatMessage({id: 'order.validate.package'});
   }
 
   if (!values.name) {
-    errors.name = 'Har du inget namn?';
+    errors.name = formatMessage({id: 'order.validate.firstname'});
   }
 
   if (!values.surname) {
-    errors.surname = 'Vi behöver ett efternamn';
+    errors.surname = formatMessage({id: 'order.validate.surname'});
   }
 
   if (!values.email) {
-    errors.email = 'Vi behöver kunna nå dig';
+    errors.email = formatMessage({id: 'order.validate.email'});
   }
 
   if (!values.childsName) {
-    errors.childsName = 'Detta får du ju bara inte glömma!';
+    errors.childsName = formatMessage({id: 'order.validate.child.name'});
   }
 
   if (!values.childsAge) {
-    errors.childsAge = 'Ditt barn behöver en ålder!';
+    errors.childsAge = formatMessage({id: 'order.validate.child.age'});
   } else if (values.childsAge >= 18) {
-    errors.childsAge = 'Du försöker beställa en vuxen...';
+    errors.childsAge = formatMessage({id: 'order.validate.child.notChild'});
   }
 
   if (!values.invoicing) {
-    errors.invoicing = 'Vill du inte betala, eller?!';
+    errors.invoicing = formatMessage({id: 'order.validate.invoicing'});
   }
 
   if (values.childsSimpleIllness && !SimpleIllnesses.includes(values.childsSimpleIllness)) {
-    errors.childsSimpleIllness = 'Okänd sjukdom!';
+    errors.childsSimpleIllness = formatMessage({id: 'order.validate.unknownIllness'});
   }
 
   if (values.childsDifficultIllness && !DifficultIllness.includes(values.childsDifficultIllness)) {
-    errors.childsDifficultIllness = 'Okänd sjukdom!';
+    errors.childsDifficultIllness = formatMessage({id: 'order.validate.unknownIllness'});
   }
 
   if (Object.keys(errors).length > 1) {

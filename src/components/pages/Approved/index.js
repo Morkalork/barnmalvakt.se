@@ -1,19 +1,20 @@
 import React from 'react';
 import { Article, Paragraph, Image, Heading } from '../../grommet-export';
 import swatImage from '../../../assets/images/swat.jpg';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 
-const Approved = () => {
+const Approved = ({intl: {formatMessage}}) => {
   return <Article margin={{'top': 'large'}} pad='medium'>
     <Heading margin={'large'}>
-      Färdig!
+      <FormattedMessage id='order.approved' />
     </Heading>
-    <Paragraph>Tack för att du har gjort en beställning! Du kommer inte att ångra det, förutom att vi nu skickat dina uppgifter till Skatteverket!</Paragraph>
-    <Paragraph>Vi har använt en jättestor sattelit för att spåra dig och för att underlätta för <b>S</b>katte<b>W</b>erkets <b>A</b>nhållnings<b>T</b>orpeder att hitta dig, det är bara att sitta ner och vänta! </Paragraph>
-    <Paragraph margin={'large'}>Om det knackar så behöver du inte ens öppna...</Paragraph>
+    <Paragraph><FormattedMessage id='order.approved.line1' /></Paragraph>
+    <Paragraph><FormattedHTMLMessage id='order.approved.line2' /></Paragraph>
+    <Paragraph margin={'large'}><FormattedMessage id='order.approved.line3' /></Paragraph>
     <Image src={swatImage}
-      alt='You can expect a visit soon!'
-      caption='Staten är din vän!' />
+      alt={formatMessage({id: 'order.approved.image.alt'})}
+      caption={formatMessage({id: 'order.approved.image.caption'})} />
   </Article>;
 };
 
-export default (Approved);
+export default injectIntl(Approved);

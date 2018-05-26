@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../../grommet-export';
 import { connect } from 'react-redux';
 import ScrollToTop from '../../ScrollToTop';
+import { FormattedMessage } from 'react-intl';
 
 const handleOnApproveClick = () => {
   ReactGA.event({
@@ -33,42 +34,42 @@ const Approve = ({
   childsDifficultIllness,
   childsAccident }) => {
   const itemsToApprove = [
-    { key: 'Namn', val: name },
-    { key: 'Efternamn', val: surname },
-    { key: 'E-post', val: email },
-    { key: 'Barnets namn', val: childsName },
-    { key: 'Barnets blodtyp', val: childsBloodType },
-    { key: 'Barnets ålder', val: childsAge },
-    { key: 'Enklare sjukdom', val: childsSimpleIllness },
-    { key: 'Svårare sjukdom', val: childsDifficultIllness },
-    { key: 'Olycksdatum', val: childsAccident }
+    { key: 'order.form.firstname', val: name },
+    { key: 'order.form.surname', val: surname },
+    { key: 'order.form.email', val: email },
+    { key: 'order.form.child.firstname', val: childsName },
+    { key: 'order.form.child.bloodType', val: childsBloodType },
+    { key: 'order.form.child.age', val: childsAge },
+    { key: 'order.form.child.simpleIllness', val: childsSimpleIllness },
+    { key: 'order.form.child.difficultIllness', val: childsDifficultIllness },
+    { key: 'order.form.child.accident', val: childsAccident }
   ];
 
   return <Article margin={{ 'top': 'large' }} pad='medium'>
     <ScrollToTop>
       <Heading margin={'large'}>
-        Godkänn och betala!
+        <FormattedMessage id='order.approve' />
       </Heading>
-      <Paragraph>Tack för att du valt att använda dig av vår tjänst! Vi tror att du kommer att bli jättenöjd med ditt paket ({selectedPackage})!</Paragraph>
-      <Paragraph>Titta igenom uppgifterna ytterligare en gång här under och tryck sedan godkänn så kommer ett e-mail med faktura att skickas ut till dig!</Paragraph>
+      <Paragraph><FormattedMessage id='order.approve.line1' /> ({selectedPackage})!</Paragraph>
+      <Paragraph><FormattedMessage id='order.approve.line2' /></Paragraph>
       <List>
         {itemsToApprove.map((item, index) =>
           <ListItem justify='between' separator='horizontal' key={index} responsive={false}>
-            <span><strong>{item.key}</strong></span>
+            <span><strong><FormattedMessage id={item.key} /></strong></span>
             <span className='secondary'>{item.val}</span>
           </ListItem>
         )}
       </List>
-      <Paragraph margin={'large'}>Om allt ser bra ut så var välj knappen ‘Godkänn‘, annars gå tillbaka och gör de ändringar du behöver!</Paragraph>
+      <Paragraph margin={'large'}><FormattedMessage id='order.approve.line3' /></Paragraph>
       <Box flex={true}
         justify='between'
         align='center'
-        pad={{'between': 'small'}}>
-        <Button label='Tillbaks...'
+        pad={{ 'between': 'small' }}>
+        <Button label={<FormattedMessage id='order.approve.back' />}
           path='/Order'
           onClick={handleOnCancelClick}
           secondary={true} />
-        <Button label='Godkänn!'
+        <Button label={<FormattedMessage id='order.approve.accept' />}
           path='/Approved'
           onClick={handleOnApproveClick}
           primary={true} />

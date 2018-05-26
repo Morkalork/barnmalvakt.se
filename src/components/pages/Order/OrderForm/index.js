@@ -93,7 +93,7 @@ const renderSearchbox = (
     <SearchInput
       value={input.value}
       suggestions={suggestions.map((suggestion) => formatMessage({ id: suggestion }))}
-      onSelect={({ target, suggestion }) => input.onChange(formatMessage({ id: suggestion }))} />
+      onSelect={({ target, suggestion }) => input.onChange(suggestion)} />
   </FormField>;
 };
 
@@ -136,7 +136,7 @@ class OrderForm extends Component {
   }
 
   handleSubmit(values) {
-    validateForm(values);
+    validateForm(values, this.props.intl.formatMessage);
 
     this.props.onSubmit();
   }
