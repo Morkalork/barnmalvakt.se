@@ -2,6 +2,7 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import { Heading, Paragraph, Button } from '../../../grommet-export';
 import BlueSection from '../../../BlueSection';
+import { injectIntl } from 'react-intl';
 
 const handleOnClick = () => {
   ReactGA.event({
@@ -10,7 +11,7 @@ const handleOnClick = () => {
   });
 };
 
-const Order = () => {
+const Order = ({ intl: { formatMessage } }) => {
   return <BlueSection justify='center' align='center' full={true}>
     <Heading
       tag='h2'
@@ -18,14 +19,14 @@ const Order = () => {
       strong={true}
       margin='large'
       uppercase={true}>
-      Hur går jag tillväga?
+      {formatMessage({id: 'order.how.title'})}
     </Heading>
     <Paragraph size='large'>
-      Processen är så enkel den kan bli! Tryck på knappen här under så kommer du till vårt beställningsformulär. Väl där väljer du vilket paket du vill ha och hur du vill betala och sen är det bara att trycka på beställ-knappen så sköter vi resten! Enkelt, inte sant?
+      {formatMessage({id: 'order.how.description'})}
     </Paragraph>
     <Paragraph>
       <Button
-        label='Beställ!'
+        label={formatMessage({id: 'order.how.orderButton'})}
         onClick={handleOnClick}
         path='/order'
         primary={true} />
@@ -33,4 +34,4 @@ const Order = () => {
   </BlueSection>;
 };
 
-export default Order;
+export default injectIntl(Order);

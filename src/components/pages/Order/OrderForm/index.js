@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Form, Header, Heading, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
 import { Field, reduxForm } from 'redux-form';
 import validateForm from './validate-form';
-import { SimpleIllnesses, DifficultIllness, BloodTypes } from './constants';
+import { injectIntl } from 'react-intl';
 
 const packages = [{
   label: 'Basic',
@@ -21,22 +21,22 @@ const packages = [{
 const renderRadioButtons = ({
   input,
   label,
-  meta: { touched, error, warning } }) => {
+  meta: { touched, error, warning } }, formatMessage) => {
   return <FormField label={label}
     error={error}>
     <RadioButton id='monthly'
       value='monthly'
-      label='Månadsvis'
+      label={formatMessage({ id: 'order.form.invoicing.monthly' })}
       onChange={(e) => input.onChange(e.target.value)}
       checked={input.value === 'monthly'} />
     <RadioButton id='quarterly'
       value='quarterly'
-      label='Kvartalsvis (5% rabatt!)'
+      label={formatMessage({ id: 'order.form.invoicing.quarterly' })}
       onChange={(e) => input.onChange(e.target.value)}
       checked={input.value === 'quarterly'} />
     <RadioButton id='yearly'
       value='yearly'
-      label='Årsvis (15% rabatt!)'
+      label={formatMessage({ id: 'order.form.invoicing.yearly' })}
       onChange={(e) => input.onChange(e.target.value)}
       checked={input.value === 'yearly'} />
   </FormField>;
@@ -74,25 +74,32 @@ const renderDateTime = ({
 
 const renderSearchbox = (
   fields,
-  suggestions) => {
+  suggestionId,
+  suggestionCount,
+  formatMessage) => {
   const {
     input,
     label,
     meta: { error }
   } = fields;
 
+  const suggestions = [];
+  for (var i = 1; i <= suggestionCount; i++) {
+    suggestions.push(`${suggestionId}${i}`);
+  }
+
   return <FormField label={label}
     error={error}>
     <SearchInput
       value={input.value}
-      suggestions={suggestions}
-      onSelect={({ target, suggestion }) => input.onChange(suggestion)} />
+      suggestions={suggestions.map((suggestion) => formatMessage({ id: suggestion }))}
+      onSelect={({ target, suggestion }) => input.onChange(formatMessage({ id: suggestion }))} />
   </FormField>;
 };
 
-const renderSimpleIllnesses = (fields) => renderSearchbox(fields, SimpleIllnesses);
-const renderDifficultIllnesses = (fields) => renderSearchbox(fields, DifficultIllness);
-const renderBloodTypes = (fields) => renderSearchbox(fields, BloodTypes);
+const renderSimpleIllnesses = (fields, formatMessage) => renderSearchbox(fields, 'order.simpleIllness', 10, formatMessage);
+const renderDifficultIllnesses = (fields, formatMessage) => renderSearchbox(fields, 'order.difficultIllness', 12, formatMessage);
+const renderBloodTypes = (fields, formatMessage) => renderSearchbox(fields, 'order.bloodTypes', 4, formatMessage);
 
 const handleOnClick = () => {
   ReactGA.event({
@@ -135,7 +142,7 @@ class OrderForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, intl: { formatMessage } } = this.props;
     const isStandard = this.state.package > packages[0].value;
     const isPremium = this.state.package > packages[1].value;
 
@@ -144,23 +151,23 @@ class OrderForm extends Component {
         <Header justify='center'>
           <Heading strong={true}
             tag={this.props.isMobile ? 'h5' : 'h2'}>
-            Beställ nu!
+            {formatMessage({ id: 'order.form.orderNow' })}
           </Heading>
         </Header>
-        <Field name='package' label='Välj paket' component={this.renderSelect} />
-        <Field name='name' label='Förnamn' component={renderTextbox} />
-        <Field name='surname' label='Efternamn' component={renderTextbox} />
-        <Field name='email' label='E-post' component={renderTextbox} />
-        <Field name='childsName' label='Barnets förnamn' component={renderTextbox} />
-        <Field name='childsBloodType' label='Barnets blodgrupp' component={renderBloodTypes} />
-        {isStandard && <Field name='childsMiddleName' label='Barnets mellannamn' component={renderTextbox} />}
-        <Field name='childsAge' label='Barnets ålder' component={renderNumberbox} />
-        {isStandard && <Field name='childsSimpleIllness' label='Enklare sjukdom' component={renderSimpleIllnesses} />}
-        {isPremium && <Field name='childsDifficultIllness' label='Svårare sjukdom' component={renderDifficultIllnesses} />}
-        {isPremium && <Field name='childsAccident' label='Olycka (datum för olyckan)' component={renderDateTime} />}
-        <Field name='invoicing' label='Fakturering' component={renderRadioButtons} />
+        <Field name='package' label={formatMessage({ id: 'order.form.choosePackage' })} component={this.renderSelect} />
+        <Field name='name' label={formatMessage({ id: 'order.form.firstname' })} component={renderTextbox} />
+        <Field name='surname' label={formatMessage({ id: 'order.form.surname' })} component={renderTextbox} />
+        <Field name='email' label={formatMessage({ id: 'order.form.email' })} component={renderTextbox} />
+        <Field name='childsName' label={formatMessage({ id: 'order.form.child.firstname' })} component={renderTextbox} />
+        <Field name='childsBloodType' label={formatMessage({ id: 'order.form.child.bloodType' })} component={(fields) => renderBloodTypes(fields, formatMessage)} />
+        {isStandard && <Field name='childsMiddleName' label={formatMessage({ id: 'order.form.child.middlename' })} component={renderTextbox} />}
+        <Field name='childsAge' label={formatMessage({ id: 'order.form.child.age' })} component={renderNumberbox} />
+        {isStandard && <Field name='childsSimpleIllness' label={formatMessage({ id: 'order.form.child.simpleIllness' })} component={(fields) => renderSimpleIllnesses(fields, formatMessage)} />}
+        {isPremium && <Field name='childsDifficultIllness' label={formatMessage({ id: 'order.form.child.difficultIllness' })} component={(fields) => renderDifficultIllnesses(fields, formatMessage)} />}
+        {isPremium && <Field name='childsAccident' label={formatMessage({ id: 'order.form.child.accident' })} component={renderDateTime} />}
+        <Field name='invoicing' label={formatMessage({ id: 'order.form.invoicing' })} component={(fields) => renderRadioButtons(fields, formatMessage)} />
         <Paragraph>
-          <Button label='Beställ!'
+          <Button label={formatMessage({ id: 'order.how.orderButton' })}
             type='submit'
             onClick={handleOnClick}
             primary={true} />
@@ -175,7 +182,8 @@ OrderForm.propTypes = {
   onSubmit: PropTypes.func.isRequired // From parent
 };
 
-export default connect((state) => ({
+// HOC hell :)
+export default injectIntl(connect((state) => ({
   isMobile: state.root.isMobile
 }))(reduxForm({
   initialValues: {
@@ -184,4 +192,4 @@ export default connect((state) => ({
   },
   form: 'order',
   destroyOnUnmount: false
-})(OrderForm));
+})(OrderForm)));

@@ -15,3 +15,7 @@ Then to run it, open a terminal (if you haven't at this point then how did you r
 `npm run start`
 
 Then visit localhost:8080.
+
+## General information
+
+Flag icons were taken from this Public Domain archive: (http://www.iconarchive.com/show/flags-icons-by-wikipedia.1.html)[http://www.iconarchive.com/show/flags-icons-by-wikipedia.1.html].

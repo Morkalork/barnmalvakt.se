@@ -14,7 +14,7 @@ export const toggleResponsiveness = (isMobile) => {
 };
 
 export const setLanguage = (newLanguage) => {
-  window.localStorage.setItem('lang', newLanguage); // Non-async (sync) (phew, this was a pointless comment...)
+  window.localStorage.setItem('bm-lang', newLanguage); // Non-async (sync) (phew, this was a pointless comment...)
 
   return {
     type: SET_LANGUAGE,

@@ -1,7 +1,8 @@
 import React from 'react';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { Section, Heading, Paragraph } from '../../../grommet-export';
 
-const MyRights = () => {
+const MyRights = ({ intl: { formatMessage } }) => {
   return <Section justify='center' align='center' full={true} pad='small'>
     <Heading
       tag='h2'
@@ -9,18 +10,30 @@ const MyRights = () => {
       strong={true}
       margin='large'
       uppercase={true}>
-      Bejaka dina rättigheter!
+      <FormattedMessage id='myrights.header' />
     </Heading>
     <Paragraph size='medium' align='center'>
-      Har du tröttnat på att dina kollegor vabbar 6 dagar i veckan? På att alla andra är föräldralediga och lämnar dig med jobbet?
+      <FormattedMessage id='myrights.line1' />
     </Paragraph>
     <Paragraph size='medium' align='center'>
-      Har du fått nog av att dina medarbetare alltid kan lägga upp semesterbilder med familjen från Maldiverna på LinkedIn med texten ‘<em>Offline, livet är mer än bara jobb</em>‘ och få 800 likes när du tvingas jobba över för att täcka deras statligt finansierade frånvaro?
+      <FormattedMessage
+        id='myrights.line2'
+        values={{
+          linkedInMessage: <em>
+            <FormattedMessage id='myrights.line2.linkedInMessage' />
+          </em>
+        }} />
     </Paragraph>
     <Paragraph size='medium' align='center'>
-      Känner du att det kanske är dags för dig att casha ut, tid att få svar på frågan ‘<em>Vad fan får <strong>jag</strong> för pengarna?</em>‘ och äntligen få lite välförjänt, statsfinansierad långsemester och betala dina Jägerbombs med barnbidrag?
+      <FormattedMessage
+        id='myrights.line3'
+        values={{
+          taxMoney: <em>
+            <FormattedMessage id='myrights.line3.taxMoney' />
+          </em>
+        }} />
     </Paragraph>
   </Section>;
 };
 
-export default MyRights;
+export default injectIntl(MyRights);

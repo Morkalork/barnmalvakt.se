@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import OrderForm from './OrderForm';
 import { withRouter } from 'react-router-dom';
 import ScrollToTop from '../../ScrollToTop';
+import { injectIntl } from 'react-intl';
 
 const CheckMark = styled(FormCheckmarkIcon)`
   stroke: #32CD32;
@@ -16,28 +17,28 @@ const CloseMark = styled(FormCloseIcon)`
 stroke: #DB2525;
 `;
 
-const headers = ['Basic', 'Standard', 'Premium'];
+const headers = ['order.header1', 'order.header2', 'order.header3'];
 
 const featureList = [
-  { label: 'Födelsebevis', level: 1, title: 'Vi registrerar ett födelsebevis hos skatteverket och skickar dig orginalet.' },
-  { label: 'Välja namn', level: 1, title: 'Så länge ditt val av namn överensstämmer med skatteverkets regler så får du välja namn fritt.' },
-  { label: 'Välja blodgrupp', level: 1, title: 'Välj mellan 0, A, B eller den fräsiga AB.' },
-  { label: 'Bilder från födsel', level: 1, title: 'Vi sänder över 3 bilder från födseln, professionellt fejkade.' },
-  { label: '10 st bebis-bilder', level: 1, title: 'Beroende på vald ålder så genererar vi 10 st bilder från födsel upp till nuvarande ålder.' },
-  { label: '3 st anekdoter', level: 1, title: 'Kul anekdoter att berätta om att ni födde i bilen, fick reda på graviditeten så sent som i 6:e månaden eller varför inte den klassiska "de blandade ihop barnen på BB, vi hoppas det blev rätt, haha!"' },
-  { label: 'Välja mellannamn', level: 2, title: 'Samma regler gäller som med namn, skatteverket ska godkänna det.' },
-  { label: 'Förskoleplats', level: 2, title: 'Vi har samarbete med över 40 förskolor i landet för fejkade platser och skolorna kommer att svara på förfrågningar om barnet om så behövs.' },
-  { label: 'Skolmålvakt', level: 2, title: 'Vi har riktiga barn i skolan som kommer att agera målvakt för ditt barn (utan vetskap, ingen skadas av det) vilket innebär att du kan vabba när de är sjukregisterade.' },
-  { label: 'Enklare sjukdom', level: 2, title: 'Vill du att ditt barn ska ha någon kul sjukdom som pollenallergi eller ADHD? Välj ur en lista av trevliga och någorlunda lätthanterliga sjukdomar!' },
-  { label: 'Svårare sjukdom', level: 3, title: 'Ulcerös Kolit? Reumatism? Kronisk Bronkit? Vi har en lista, din unge kan ha det om du beställer det!' },
-  { label: 'Lånebarn, 3 tillfällen', level: 3, title: 'Låna ett barn att ta med till jobbet eller vännerna för att visa upp. Max 6 timmar per tillfälle.' },
-  { label: '"Facebook Family"', level: 3, title: 'Få speciellt genererade bilder med dig och barnet tillsammans i Thailand, Ishotellet i Jukkasjärvi eller varför inte på en valsafari i Polen? Dela som en galning!' },
-  { label: 'Olycka', level: 3, title: 'Ha en olycka med barnet, brutet ben, påkörd av en bil eller nafsad av en bäver, vi fejkar intyget till den slumpmässigt utvalda olyckan!' }
+  { label: 'order.feature.birthCertificate', level: 1, title: 'order.feature.birthCertificateText' },
+  { label: 'order.feature.chooseName', level: 1, title: 'order.feature.chooseNameText' },
+  { label: 'order.feature.bloodType', level: 1, title: 'order.feature.bloodTypeText' },
+  { label: 'order.feature.birthPictures', level: 1, title: 'order.feature.birthPicturesText' },
+  { label: 'order.feature.babyPictures', level: 1, title: 'order.feature.babyPicturesText' },
+  { label: 'order.feature.anecdotes', level: 1, title: 'order.feature.anecdotesText' },
+  { label: 'order.feature.middleName', level: 2, title: 'order.feature.middleNameText' },
+  { label: 'order.feature.preSchool', level: 2, title: 'order.feature.preSchoolText' },
+  { label: 'order.feature.schoolie', level: 2, title: 'order.feature.schoolieText' },
+  { label: 'order.feature.simpleIllness', level: 2, title: 'order.feature.simpleIllnessText' },
+  { label: 'order.feature.difficultIllness', level: 3, title: 'order.feature.difficultIllnessText' },
+  { label: 'order.feature.kidRental', level: 3, title: 'order.feature.kidRentalText' },
+  { label: 'order.feature.facebookFamily', level: 3, title: 'order.feature.facebookFamilyText' },
+  { label: 'order.feature.accident', level: 3, title: 'order.feature.accidentText' }
 ];
 
 const price = [500, 2000, 5000];
 
-const Order = ({ history, isMobile }) => {
+const Order = ({ history, isMobile, intl: { formatMessage } }) => {
   const boxes = [];
   for (let i = 0; i < 3; i++) {
     const box = <Box key={i} margin='medium'>
@@ -46,17 +47,17 @@ const Order = ({ history, isMobile }) => {
         align='center'
         uppercase={true}
         strong={true}>
-        {headers[i]}
+        {formatMessage({id: headers[i]})}
       </Heading>
       <List>
         {featureList.map((feature, index) => {
           return <ListItem justify='between' separator='horizontal' key={index} responsive={false}>
-            <span title={feature.title}>{feature.label}</span>
+            <span title={formatMessage({id: feature.title})}>{formatMessage({id: feature.label})}</span>
             <span>{feature.level <= (i + 1) ? <CheckMark /> : <CloseMark />}</span>
           </ListItem>;
         })}
       </List>
-      <Paragraph align='center'>{price[i]}kr/mån</Paragraph>
+      <Paragraph align='center'>{price[i]}{formatMessage({id: 'order.denomination'})}</Paragraph>
     </Box>;
     boxes.push(box);
   }
@@ -68,7 +69,7 @@ const Order = ({ history, isMobile }) => {
           tag={isMobile ? 'h5' : 'h2'}
           uppercase={true}
           align='center'>
-          Välj paket &amp; beställ!
+          {formatMessage({id: 'order.title'})}
         </Heading>
       </Section>
       <Section flex={true} justify='center' align='center' alignContent='between' direction='row' wrap={true}>
@@ -88,6 +89,6 @@ Order.propTypes = {
   isMobile: PropTypes.bool.isRequired
 };
 
-export default connect((state) => ({
+export default injectIntl(connect((state) => ({
   isMobile: state.root.isMobile
-}))(withRouter(Order));
+}))(withRouter(Order)));

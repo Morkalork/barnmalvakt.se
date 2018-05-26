@@ -3,8 +3,9 @@ import { Box, Card } from '../../../grommet-export';
 import SickImage from '../../../../assets/images/sick.jpg';
 import AccidentImage from '../../../../assets/images/accident.jpg';
 import ChildImage from '../../../../assets/images/child.jpg';
+import { injectIntl } from 'react-intl';
 
-const Faq2 = () => {
+const Faq2 = ({ intl: { formatMessage } }) => {
   return <Box flex={true}
     align='start'
     direction='row'
@@ -12,20 +13,20 @@ const Faq2 = () => {
     justify='center'>
     <Card thumbnail={SickImage}
       margin='medium'
-      label='Sjukdom'
-      heading='Hur mycket kan jag vabba?'
-      description='Det är såklart upp till dig själv, vissa föräldrar vabbar i flera månader, vissa vabbar nästan aldrig. Känn efter själv kanske?' />
+      label={formatMessage({ id: 'faq.illness' })}
+      heading={formatMessage({ id: 'faq.illness.title' })}
+      description={formatMessage({ id: 'faq.illness.description' })} />
     <Card thumbnail={AccidentImage}
       margin='medium'
-      label='Olyckor'
-      heading='Vilken typ av olyckor finns?'
-      description='Vi lottar ut olyckor om du köper det paketet, men det kan vara brutet ben, föll i grillen, påkörd av en statssubventionerad el-cykel osv.' />
+      label={formatMessage({ id: 'faq.accidents' })}
+      heading={formatMessage({ id: 'faq.accidents.title' })}
+      description={formatMessage({ id: 'faq.accidents.description' })} />
     <Card thumbnail={ChildImage}
       margin='medium'
-      label='Utseende'
-      heading='Jag vill inte ha en ful unge!'
-      description='Självklart är alla våra barn söta och underbara, detta är ingen hemsk tjänst. Vi garanterar att du kommer att bli nöjd!' />
+      label={formatMessage({ id: 'faq.looks' })}
+      heading={formatMessage({ id: 'faq.looks.title' })}
+      description={formatMessage({ id: 'faq.looks.description' })} />
   </Box>;
 };
 
-export default Faq2;
+export default injectIntl(Faq2);

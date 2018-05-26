@@ -1,8 +1,9 @@
 import React from 'react';
 import { Section, Heading, Anchor } from '../../../grommet-export';
 import Faq1 from '../../GeneralFaq/faq-1';
+import { injectIntl } from 'react-intl';
 
-const Faq = () => {
+const Faq = ({ intl: { formatMessage } }) => {
   return <Section justify='center' align='center' full={{ 'horizontal': true }}>
     <Heading
       tag='h2'
@@ -10,7 +11,7 @@ const Faq = () => {
       strong={true}
       margin='large'
       uppercase={true}>
-      Frågor &amp; Svar
+      {formatMessage({ id: 'faq.title' })}
     </Heading>
     <Faq1 />
     <Anchor
@@ -18,8 +19,8 @@ const Faq = () => {
       primary={true}
       reverse={true}
       align='center'
-      label='Undrar du över något mer?' />
+      label={formatMessage({ id: 'faq.moreQuestions' })} />
   </Section>;
 };
 
-export default Faq;
+export default injectIntl(Faq);
