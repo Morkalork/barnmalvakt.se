@@ -1,7 +1,17 @@
 import getLanguageFromNavigator from './get-language-from-navigator';
+import getLanguageFromQueryString from './get-language-from-query-string';
 
-export default function() {
-  return (window.localStorage && window.localStorage.getItem('bm-lang')) || // Check the URL
+const validLanguages = ['en', 'sv'];
+
+export default function () {
+  const lang = (window.localStorage && window.localStorage.getItem('bm-lang')) || // Check the URL
+    getLanguageFromQueryString() ||
     getLanguageFromNavigator() || // Check the browser settings
-    'sv'; // F*ck it, Swedish is the future lingua franca anyway!
+    'en';
+
+  if (!lang || !validLanguages.includes(lang)) {
+    return validLanguages[0];
+  }
+
+  return lang;
 };

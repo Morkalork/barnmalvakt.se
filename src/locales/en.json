@@ -34,8 +34,8 @@
   "frontpage.tagLine": "‘In a world of fake news, have yourself a fake family‘",
 
   "myrights.header": "Affirm your rights!",
-  "myrights.line1": "Are you sick of your colleagues staying home to take care of their kids all the time? Sick of them constantly being away on parental leave, forcing you to pick up their slack?",
-  "myrights.line2": "Are you fed up with your co-workers constantly putting up family photos on LinkedIn from the Maldives with the line ‘{linkedInMessage}‘ and have 800 likes when you have to work overtime to cover for their government-funded absence?",
+  "myrights.line1": "Are you sick of your colleagues staying home to take care of their kids all the time? Tired of them constantly being away on parental leave, forcing you to pick up their slack?",
+  "myrights.line2": "Are you fed up with your co-workers constantly uploading family photos on LinkedIn from the Maldives with the line ‘{linkedInMessage}‘ and have 800 likes when you have to work overtime to cover for their government-funded absence?",
   "myrights.line2.linkedInMessage": "Offline, live if more than just work",
   "myrights.line3": "Do you feel that perhaps it's time for you to cash out? Time to finally get an answer to the question ‘{taxMoney}‘ and finally have some well deserved, state subsidized sabbatical and pay your Jägerbombs with child support?",
   "myrights.line3.taxMoney": "What the ¤!$§% do I get for paying my taxes?",
@@ -49,7 +49,7 @@
   "myoptions.section1.item3": "Go on parental leave",
   "myoptions.section1.item4": "Take part of the status that being a parent affords you!",
   "myoptions.section2.header": "Mainly for men",
-  "myoptions.section2.line1": "There is no reason to pretend that our service isn't mainly directed towards men. After all, they are the ones who stand to gain the most of being a parent. When a male colleague has to take care of his small child or shows a picture of his pride he can feel like a hero. Being a parent is something he can brag about. This isn't guaranteed for employees of the opposite sex at a workplace.",
+  "myoptions.section2.line1": "There is no reason to pretend that our service isn't mainly directed towards men. After all, they are the ones who stand to gain the most of being a parent. The few times a male colleague has to take care of his toddler or shows a picture of his pride he can feel like a hero. Being a parent is something he can brag about. This isn't guaranteed for employees of the opposite sex at a workplace.",
   "myoptions.section2.line2": "The service can be adapted to focus more on your own family than your employer. Maybe you're looking for another kind of paternity leave; one from your own nagging parents! Stop their badgering about grand children and register a kid to silence them! {link} shows that many grandparents are more interested in the actual status a grand child affords them than the actual child itself. If they don't ever ask to see the kid then nobody's the wiser!",
   "myoptions.section2.line2.link": "Studies",
 
