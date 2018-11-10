@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
-import { List, ListItem, Heading, Paragraph, Article, Box, Button } from '../../grommet-export';
+import { List, ListItem, Heading, Paragraph, Article, Box, Button } from 'grommet';
 import { connect } from 'react-redux';
 import ScrollToTop from '../../ScrollToTop';
 import { FormattedMessage } from 'react-intl';

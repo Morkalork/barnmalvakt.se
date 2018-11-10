@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { Section, Heading, Box } from '../../../grommet-export';
+import { Section, Heading, Box } from 'grommet';
 import styled from 'styled-components';
 import BackgroundImage from '../../../../assets/images/jumbotron.jpg';
 import BackgroundImageMobile from '../../../../assets/images/jumbotron_mobile.jpg';

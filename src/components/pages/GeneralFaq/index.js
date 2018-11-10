@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Heading } from '../../grommet-export';
+import { Section, Heading } from 'grommet';
 import Faq1 from './faq-1';
 import Faq2 from './faq-2';
 import { injectIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { Heading, Paragraph, Button } from '../../../grommet-export';
+import { Heading, Paragraph, Button } from 'grommet';
 import BlueSection from '../../../BlueSection';
 import { injectIntl } from 'react-intl';
 

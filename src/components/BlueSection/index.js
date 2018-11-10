@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Box } from '../grommet-export';
+import { Section, Box } from 'grommet';
 import styled from 'styled-components';
 import BlueBackgroundImage from '../../assets/images/blue-background.png';
 

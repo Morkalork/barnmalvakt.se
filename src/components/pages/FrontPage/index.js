@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article } from '../../grommet-export';
+import { Article } from 'grommet';
 import MyRights from './MyRights';
 import MyOptions from './MyOptions';
 import Faq from './Faq';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Box, Heading, Paragraph, Image } from '../../../grommet-export';
+import { Box, Heading, Paragraph, Image } from 'grommet';
 import FatherImage from '../../../../assets/images/father.png';
 import BlueSection from '../../../BlueSection';
 

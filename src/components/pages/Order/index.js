@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { Section, Box, List, ListItem, Heading, Paragraph, Article } from '../../grommet-export';
+import { Section, Box, List, ListItem, Heading, Paragraph, Article } from 'grommet';
 import FormCheckmarkIcon from 'grommet/components/icons/base/FormCheckmark';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 import styled from 'styled-components';

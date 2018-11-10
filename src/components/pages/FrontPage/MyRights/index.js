@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Section, Heading, Paragraph } from '../../../grommet-export';
+import { Section, Heading, Paragraph } from 'grommet';
 
 const MyRights = ({ intl: { formatMessage } }) => {
   return <Section justify='center' align='center' full={true} pad='small'>

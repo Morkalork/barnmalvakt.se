@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article, Paragraph, Image, Heading } from '../../grommet-export';
+import { Article, Paragraph, Image, Heading } from 'grommet';
 import swatImage from '../../../assets/images/swat.jpg';
 import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 

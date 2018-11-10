@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Header, Heading, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from '../../../grommet-export';
+import { Form, Header, Heading, TextInput, NumberInput, RadioButton, Select, FormField, Paragraph, Button, SearchInput, DateTime } from 'grommet';
 import { Field, reduxForm } from 'redux-form';
 import validateForm from './validate-form';
 import { injectIntl } from 'react-intl';

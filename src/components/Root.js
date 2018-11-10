@@ -7,7 +7,7 @@ import messagesEN from '../locales/en.json';
 import en from 'react-intl/locale-data/en';
 import sv from 'react-intl/locale-data/sv';
 import { connect } from 'react-redux';
-import { App, Article, Responsive } from './grommet-export';
+import { App, Article, Responsive } from 'grommet';
 import '../styling/index.scss';
 import Top from './Top';
 import Bottom from './Bottom';

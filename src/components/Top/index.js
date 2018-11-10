@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from 'react-intl';
-import { Header, Title, Box, Anchor, Image } from '../grommet-export';
+import { Header, Title, Box, Anchor, Image } from 'grommet';
 import styled from 'styled-components';
 import flagEn from '../../assets/icons/uk.png';
 import flagSv from '../../assets/icons/sv.png';

@@ -4,6 +4,7 @@
     "env"
   ],
   "plugins": [
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "grommet"
   ]
 }

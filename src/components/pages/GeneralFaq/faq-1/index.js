@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card } from '../../../grommet-export';
+import { Box, Card } from 'grommet';
 import LawImage from '../../../../assets/images/law.jpg';
 import SchoolImage from '../../../../assets/images/school.jpg';
 import SocialImage from '../../../../assets/images/social-media.jpg';
