@@ -6,7 +6,7 @@ I made the page to test out a mix of react/redux/react-router/webpack/ and possi
 
 ## Installation
 
-I don't know why you'd want to install this since it's already running at [http://www.barnmalvakt.se](barnmalvakt.se), but if you need to do:
+I don't know why you'd want to install this since it's already running at [barnmalvakt.se](http://www.barnmalvakt.se), but if you need to do:
 
 `npm install`
 
